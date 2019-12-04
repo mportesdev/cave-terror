@@ -26,8 +26,22 @@ class RustySword(Weapon):
         self.damage = 20
 
 
+def most_powerful_weapon(inventory):
+    max_damage = 0
+    best_weapon = None
+    for item in inventory:
+        try:
+            if item.damage > max_damage:
+                best_weapon = item
+                max_damage = item.damage
+        except AttributeError:
+            pass
+
+    return best_weapon
+
+
 def play():
-    inventory = [Dagger(), 'Gold(5)', 'Crusty Bread']
+    inventory = [Rock(), Dagger(), 'Gold(5)', 'Crusty Bread']
     print("Escape from Cave Terror!")
     while True:
         action_input = get_player_command()
