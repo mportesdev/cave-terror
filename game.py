@@ -13,7 +13,8 @@ def play():
             print("Go West!")
         elif action_input in ['i', 'I']:
             print("Inventory:")
-            print(inventory)
+            for item in inventory:
+                print('*' + str(item))
         else:
             print("Invalid action!")
 
