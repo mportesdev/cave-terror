@@ -1,4 +1,5 @@
 import items
+import world
 
 
 class Player:
@@ -12,8 +13,6 @@ class Player:
         print("Inventory:")
         for item in self.inventory:
             print('* ' + str(item))
-        best_weapon = self.most_powerful_weapon()
-        print("Your best weapon is your {}".format(best_weapon))
 
     def most_powerful_weapon(self):
         max_damage = 0
@@ -43,3 +42,14 @@ class Player:
 
     def move_west(self):
         self.move(dx=-1, dy=0)
+
+    def attack(self):
+        best_weapon = self.most_powerful_weapon()
+        room = world.tile_at(self.x, self.y)
+        enemy = room.enemy
+        print("You use {} against {}!".format(best_weapon.name, enemy.name))
+        enemy.hp -= best_weapon.damage
+        if not enemy.is_alive():
+            print("You killed {}!".format(enemy.name))
+        else:
+            print("{} HP is {}.".format(enemy.name, enemy.hp))
