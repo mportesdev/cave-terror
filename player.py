@@ -8,6 +8,7 @@ class Player:
                           'Gold(5)', 'Crusty Bread']
         self.x = 1
         self.y = 2
+        self.hp = 100
 
     def print_inventory(self):
         print("Inventory:")

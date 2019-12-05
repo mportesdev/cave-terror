@@ -11,6 +11,9 @@ class MapTile:
     def intro_text(self):
         raise NotImplementedError("Create a subclass instead!")
 
+    def modify_player(self, player):
+        pass
+
 
 class StartTile(MapTile):
     def intro_text(self):
@@ -50,6 +53,12 @@ class EnemyTile(MapTile):
             return "A {} awaits!".format(self.enemy.name)
         else:
             return "You've defeated the {}.".format(self.enemy.name)
+
+    def modify_player(self, player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("Enemy does {} damage. You have {} HP remaining.".
+                  format(self.enemy.damage, player.hp))
 
 
 world_map = [
