@@ -5,7 +5,7 @@ import world
 class Player:
     def __init__(self):
         self.inventory = [items.Rock(), items.Dagger(),
-                          'Gold(5)', 'Crusty Bread']
+                          'Gold(5)', items.CrustyBread()]
         self.x = 1
         self.y = 2
         self.hp = 100
