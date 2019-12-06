@@ -80,6 +80,8 @@ world_dsl = """
 
 world_map = []
 
+start_tile_location = [1, 2]
+
 
 def tile_at(x, y):
     if x < 0 or y < 0:

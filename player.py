@@ -4,16 +4,19 @@ import world
 
 class Player:
     def __init__(self):
-        self.inventory = [items.Rock(), items.Dagger(),
-                          'Gold(5)', items.CrustyBread()]
-        self.x = 1
-        self.y = 2
+        self.inventory = [items.Rock(),
+                          items.Dagger(),
+                          items.CrustyBread()]
+        self.x = world.start_tile_location[0]
+        self.y = world.start_tile_location[1]
         self.hp = 100
+        self.gold = 5
 
     def print_inventory(self):
         print("Inventory:")
         for item in self.inventory:
             print('* ' + str(item))
+        print("Gold: {}".find(self.gold))
 
     def most_powerful_weapon(self):
         max_damage = 0
