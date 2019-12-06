@@ -124,11 +124,35 @@ class TraderTile(MapTile):
         """
 
 
+class FindGoldTile(MapTile):
+    def __init__(self, x, y):
+        self.gold = random.randint(1, 50)
+        self.gold_claimed = False
+        super().__init__(x, y)
+
+    def modify_player(self, player):
+        if not self.gold_claimed:
+            self.gold_claimed = True
+            player.gold = player.gold + self.gold
+            print("+{} gold added.".format(self.gold))
+
+    def intro_text(self):
+        if self.gold_claimed:
+            return """
+            Another unremarkable part of the cave. You must forge onwards.
+            """
+        else:
+            return """
+            Someone dropped some gold. You pick it up.
+            """
+
+
 world_dsl = """
-|  |VT|  |
-|  |EN|  |
-|EN|ST|EN|
-|  |EN|  |
+|EN|EN|VT|EN|EN|
+|EN|  |  |  |EN|
+|EN|FG|EN|  |TT|
+|TT|  |ST|FG|EN|
+|FG|  |EN|  |FG|
 """
 
 world_map = []
@@ -164,6 +188,8 @@ def is_dsl_valid(dsl):
 tile_type_dict = {"VT": VictoryTile,
                   "EN": EnemyTile,
                   "ST": StartTile,
+                  "FG": FindGoldTile,
+                  "TT": TraderTile,
                   "  ": None}
 
 
