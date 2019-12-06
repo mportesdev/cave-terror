@@ -80,3 +80,7 @@ class Player:
                 valid = True
             except (ValueError, IndexError):
                 print("Invalid choice, try again.")
+
+    def trade(self):
+        room = world.tile_at(self.x, self.y)
+        room.check_if_trade(self)
