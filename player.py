@@ -16,7 +16,7 @@ class Player:
         print("Inventory:")
         for item in self.inventory:
             print('* ' + str(item))
-        print("Gold: {}".find(self.gold))
+        print("Gold: {}".format(self.gold))
 
     def most_powerful_weapon(self):
         max_damage = 0
